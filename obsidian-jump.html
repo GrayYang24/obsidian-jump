@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Obsidian 跳板页面</title>
+  <script>
+    window.onload = () => {
+      const params = new URLSearchParams(window.location.search);
+      const vault = params.get("vault");
+      const file = params.get("file");
+
+      if (vault && file) {
+        const filePath = encodeURIComponent(file);
+        const obsidianUrl = `obsidian://open?vault=${vault}&file=${filePath}`;
+        window.location.href = obsidianUrl;
+      } else {
+        document.body.innerText = "参数不完整：请确保 URL 中包含 vault 和 file 参数。";
+      }
+    };
+  </script>
+</head>
+<body>
+  正在跳转到 Obsidian...
+</body>
+</html>
